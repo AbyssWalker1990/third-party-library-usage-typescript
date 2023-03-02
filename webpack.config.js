@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  mode: 'development',
   devServer: {
     static: {
       directory: path.resolve(__dirname, '')
@@ -11,10 +12,9 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/'
+    publicPath: '/'
   },
   devtool: 'inline-source-map',
-  mode: 'development',
   module: {
     rules: [
       {
