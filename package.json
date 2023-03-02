@@ -1,0 +1,19 @@
+{
+  "name": "third-party-lib-proj-typescript",
+  "version": "1.0.0",
+  "description": "3rd party library usage with typescript project",
+  "main": "app.js",
+  "scripts": {
+    "start": "webpack serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Volodymyr Bordiian",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  }
+}
