@@ -1,4 +1,5 @@
 const path = require('path')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   mode: 'development',
@@ -25,6 +26,21 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js']
-  }
+    extensions: ['.ts', '.js'],
+    fallback: {
+      // add entries for the missing modules
+      path: false,
+      fs: false,
+      os: false,
+      process: false
+    }
+  },
+  plugins: [
+    new Dotenv({
+      path: './.env',
+      safe: true,
+      systemvars: true,
+      defaults: true
+    })
+  ]
 }
