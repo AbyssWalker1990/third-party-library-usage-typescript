@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { API_KEY } from '../config'
 
+// declare let google: any
+
 interface Results {
   results: Array<{ geometry: { location: { lat: number, lng: number } } }>
   status: 'OK' | 'ZERO_RESULTS'
@@ -25,6 +27,14 @@ function searchAddressHandler (event: Event): void {
         throw new Error('Couldnt fetch location')
       }
       const coordinates = response.data.results[0].geometry.location
+      const map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
+        center: coordinates,
+        zoom: 16
+      })
+      const marker = new google.maps.Marker({
+        position: coordinates,
+        map
+      })
     })
     .catch(err => {
       alert(err.message)
@@ -35,3 +45,9 @@ function searchAddressHandler (event: Event): void {
 if (form != null) {
   form.addEventListener('submit', searchAddressHandler)
 }
+
+window.addEventListener('load', function () {
+  const script = document.createElement('script')
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY as string}`
+  document.head.appendChild(script)
+})
